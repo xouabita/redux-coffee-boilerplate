@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/xouabita/redux-coffee-boilerplate/issues"
   },
-  "homepage": "https://github.com/xouabita/redux-coffee-boilerplate#readme"
+  "homepage": "https://github.com/xouabita/redux-coffee-boilerplate#readme",
+  "dependencies": {
+    "react": "^0.13.3",
+    "react-router": "^0.13.3"
+  }
 }
