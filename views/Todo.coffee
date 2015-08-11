@@ -1,11 +1,27 @@
 React         = require 'react'
-{ Component } = React
+{ Component, PropTypes } = React
 
 class Todo extends Component
+
+  @propTypes:
+    todos: PropTypes.array.isRequired
 
   constructor: (props) ->
     super props
 
-  render: -> <p>Todos !!!</p>
+  render: ->
+    <ul>
+      {
+        @props.todos.map (todo, i) ->
+          <li key={i}>{todo}</li>
+      }
+    </ul>
 
-module.exports = Todo
+class TodoContainer extends Component
+
+  _todos = ['lol','xd']
+
+  render: ->
+    <Todo todos={_todos} />
+
+module.exports = TodoContainer
