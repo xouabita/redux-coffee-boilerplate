@@ -1,6 +1,6 @@
 {
   "name": "redux-coffee-boilerplate",
-  "version": "0.0.1",
+  "version": "0.5.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,15 @@
   "bugs": {
     "url": "https://github.com/xouabita/redux-coffee-boilerplate/issues"
   },
+  "keywords": [
+    "react",
+    "redux",
+    "boilerplate",
+    "nodejs",
+    "express",
+    "universal",
+    "react-hot-loader"
+  ],
   "homepage": "https://github.com/xouabita/redux-coffee-boilerplate#readme",
   "dependencies": {
     "colors": "^1.1.2",
