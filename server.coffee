@@ -24,7 +24,6 @@ app.use (req, res, next) ->
 
   router.run (Handler, state) ->
 
-    console.log state.routes
     fetchDataFromRoute(state, redux).then ->
       initialState = redux.getState()
       handler      = makeHandler Handler, redux
