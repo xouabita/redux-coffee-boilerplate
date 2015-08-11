@@ -11,6 +11,7 @@ app = express()
 base_html = fs.readFileSync './__dist__/base.html', 'utf-8'
 Router    = require 'react-router'
 
+app.use '/api', require './api'
 app.use (req, res, next) ->
 
   router = Router.create
