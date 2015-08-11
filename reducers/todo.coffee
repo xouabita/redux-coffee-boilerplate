@@ -18,7 +18,11 @@ todos = (state, action) ->
 
   switch action.type
 
-    when ADD_TODO then state = state.push action.payload
+    when ADD_TODO
+      todos = state.get 'todos'
+      todos = todos.push action.payload
+      state = state.merge
+        todos: todos
     when GET_TODOS
       state = state.merge
         promise: action.payload
