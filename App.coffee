@@ -2,13 +2,15 @@ React = require 'react'
 { Route, DefaultRoute } = require 'react-router'
 { Provider } = require 'redux/react'
 
+Page = require './components/Page'
+
 Index = require './views/Index'
 Todo  = require './views/Todo'
 
 module.exports.routes =
-  <Route path="/">
+  <Route path="/" handler={Page}>
     <DefaultRoute handler={Index} />
-    <Route path="todo" handler={Todo} />
+    <Route path="/todo" handler={Todo} />
   </Route>
 
 module.exports.fetchDataFromRoute = (state, redux) ->
