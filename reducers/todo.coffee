@@ -11,7 +11,7 @@ initialState =
   todos: []
   status: 'LOADED'
 
-todos = (state, actions) ->
+todos = (state, action) ->
 
   state = if state then state else initialState
   state = Immutable.fromJS state

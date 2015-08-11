@@ -5,8 +5,7 @@
   TODOS_ERROR
 } = require '../constants/todos.coffee'
 
-request = require 'superagent'
-{ Promise } = require 'es6-promise'
+Api = require '../services/Api.coffee'
 
 module.exports.addTodo = (todo) ->
   type: ADD_TODO
@@ -15,12 +14,12 @@ module.exports.addTodo = (todo) ->
 module.exports.getTodos = -> (dispatch) ->
   action = dispatch
     type: GET_TODOS
-    payload: request.get '/api/album'
+    payload: Api.get 'http://localhost:8000/api/todos'
 
   action.payload
     .then (todos) -> dispatch
       type: TODOS_LOADED
-      payload: JSON.parse todos.text
+      payload: todos
     .catch -> dispatch
       type: TODOS_ERROR
 
