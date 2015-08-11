@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+
+    <% metas.forEach(function(meta) { %>
+      <%- meta -%>
+    <% }) %>
+    <title>Redux Coffee Boilerplate</title>
+    <script id="initial-state" type="application/json"><%- state %></script>
+    {% if (o.htmlWebpackPlugin.options.hot_reload) { %}
+      <script src="http://localhost:4243/webpack-dev-server.js"></script>
+    {% } %}
+  </head>
+  <body>
+    <div id="app">
+      <div><%- react -%></div>
+    </div>
+  </body>
+</html>

@@ -17,7 +17,31 @@
   },
   "homepage": "https://github.com/xouabita/redux-coffee-boilerplate#readme",
   "dependencies": {
+    "colors": "^1.1.2",
+    "ejs": "^2.3.3",
+    "express": "^4.13.3",
+    "jquery": "^2.1.4",
+    "nib": "^1.1.0",
     "react": "^0.13.3",
-    "react-router": "^0.13.3"
+    "react-router": "^0.13.3",
+    "rupture": "^0.6.1"
+  },
+  "devDependencies": {
+    "cjsx-loader": "^2.0.1",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.9.3",
+    "css-loader": "^0.15.6",
+    "extract-text-webpack-plugin": "^0.8.2",
+    "file-loader": "^0.8.4",
+    "gulp": "^3.9.0",
+    "html-webpack-plugin": "^1.6.1",
+    "nodemon": "^1.4.0",
+    "react-hot-loader": "^1.2.8",
+    "source-map-support": "^0.3.2",
+    "style-loader": "^0.12.3",
+    "stylus-loader": "^1.2.1",
+    "url-loader": "^0.5.6",
+    "webpack": "^1.11.0",
+    "webpack-dev-server": "^1.10.1"
   }
 }
