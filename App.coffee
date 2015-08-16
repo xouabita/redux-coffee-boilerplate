@@ -7,6 +7,9 @@ Page = require './components/Page'
 Index = require './views/Index'
 Todo  = require './views/Todo'
 
+{ combineReducers, createStore, applyMiddleware } = require 'redux'
+thunk = require 'redux-thunk'
+
 module.exports.routes =
   <Route path="/" handler={Page}>
     <DefaultRoute handler={Index} />
@@ -34,3 +37,10 @@ module.exports.makeHandler = (Handler, store) ->
   <Provider store={store}>
     { -> <Handler /> }
   </Provider>
+
+module.exports.createStore = (initialState) ->
+  reducers = require './reducers'
+  reducer  = combineReducers reducers
+  createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+
+  return createStoreWithMiddleware reducer, initialState

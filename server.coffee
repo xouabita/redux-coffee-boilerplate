@@ -6,8 +6,7 @@ fs      = require 'fs'
 
 app = express()
 
-{ routes, fetchDataFromRoute, makeHandler } = require './App'
-{ createRedux } = require 'redux'
+{ routes, fetchDataFromRoute, makeHandler, createStore } = require './App'
 
 base_html = fs.readFileSync './__dist__/base.html', 'utf-8'
 Router    = require 'react-router'
@@ -19,14 +18,13 @@ app.use (req, res, next) ->
     location: req.url
     routes: routes
 
-  reducers = require './reducers'
-  redux    = createRedux reducers
+  store = createStore()
 
   router.run (Handler, state) ->
 
-    fetchDataFromRoute(state, redux).then ->
-      initialState = redux.getState()
-      handler      = makeHandler Handler, redux
+    fetchDataFromRoute(state, store).then ->
+      initialState = store.getState()
+      handler      = makeHandler Handler, store
       html         = React.renderToString handler
       res.send ejs.render base_html,
         react: html
