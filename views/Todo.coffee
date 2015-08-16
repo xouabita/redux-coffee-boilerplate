@@ -2,10 +2,14 @@ React         = require 'react'
 { Component, PropTypes } = React
 actions = require '../actions/todo'
 
-{ Connector } = require 'redux/react'
+{ connect } = require 'react-redux'
 { bindActionCreators } = require 'redux'
 
 class Todo extends Component
+
+  @initialData: (redux) ->
+    promise = redux.dispatch(actions.getTodos()).payload
+    return promise
 
   @propTypes:
     todos: PropTypes.array.isRequired
@@ -34,19 +38,8 @@ class Todo extends Component
     @props.actions.addTodo @state.value
     @setState value: ''
 
-class TodoContainer extends Component
+mapStateToProps    = (state) ->
+  todos: state.todo.todos
+mapDispatchToProps = (dispatch) -> actions: bindActionCreators actions, dispatch
 
-  @initialData: (redux) ->
-    promise = redux.dispatch(actions.getTodos()).payload
-    return promise
-
-  render: ->
-    <Connector select={(state) -> todos: state.todo.todos}>
-      {
-        (state) ->
-          bindedActions = bindActionCreators actions, state.dispatch
-          <Todo todos={state.todos} actions={bindedActions} />
-      }
-    </Connector>
-
-module.exports = TodoContainer
+module.exports = connect(mapStateToProps, mapDispatchToProps) Todo

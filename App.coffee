@@ -13,19 +13,20 @@ module.exports.routes =
     <Route path="/todo" handler={Todo} />
   </Route>
 
-module.exports.fetchDataFromRoute = (state, redux) ->
+module.exports.fetchDataFromRoute = (state, store) ->
 
   routes   = state.routes
   promises = routes
 
     # Get all the views who need data
     .filter (route) ->
-      if route.handler.initialData then yes
+      wrapped = route.handler.WrappedComponent
+      if wrapped and wrapped.initialData then yes
       else no
 
     # Return all the promises
     .map (route) ->
-      return route.handler.initialData(redux)
+      return route.handler.WrappedComponent.initialData(store)
 
   return Promise.all(promises)
 
