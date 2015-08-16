@@ -1,6 +1,6 @@
 React = require 'react'
 { Route, DefaultRoute } = require 'react-router'
-{ Provider } = require 'redux/react'
+{ Provider } = require 'react-redux'
 
 Page = require './components/Page'
 
@@ -29,7 +29,7 @@ module.exports.fetchDataFromRoute = (state, redux) ->
 
   return Promise.all(promises)
 
-module.exports.makeHandler = (Handler, redux) ->
-  <Provider redux={redux}>
+module.exports.makeHandler = (Handler, store) ->
+  <Provider store={store}>
     { -> <Handler /> }
   </Provider>
