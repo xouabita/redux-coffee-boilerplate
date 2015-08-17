@@ -1,7 +1,8 @@
 {
   ADD_TODO
+  API_TODOS
   GET_TODOS
-  TODOS_LOADED
+  TODOS_READY
   TODOS_ERROR
 } = require '../constants/todos.coffee'
 
@@ -9,7 +10,7 @@ Immutable = require 'immutable'
 
 initialState =
   todos: []
-  status: 'LOADED'
+  status: 'READY'
 
 todos = (state, action) ->
 
@@ -25,13 +26,17 @@ todos = (state, action) ->
         todos: todos
     when GET_TODOS
       state = state.merge
+        todos: action.payload
+
+    # API actions
+    when API_TODOS
+      state = state.merge
         promise: action.payload
         status: 'PENDING'
-    when TODOS_LOADED
+    when TODOS_READY
       state = state.merge
         promise: undefined
-        status: 'LOADED'
-        todos: action.payload
+        status: 'READY'
     when TODOS_ERROR
       state = state.merge
         promise: undefined

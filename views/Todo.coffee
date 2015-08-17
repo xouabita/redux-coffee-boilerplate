@@ -12,7 +12,11 @@ class Todo extends Component
     return promise
 
   @propTypes:
-    todos: PropTypes.array.isRequired
+    todos: PropTypes.arrayOf(
+      PropTypes.shape
+        _id: PropTypes.string.isRequired
+        content: PropTypes.string.isRequired
+    ).isRequired
     actions: PropTypes.object
 
   constructor: (props) ->
@@ -27,7 +31,7 @@ class Todo extends Component
           <ul>
             {
               @props.todos.map (todo, i) ->
-                <li key={i}>{todo}</li>
+                <li key={todo._id}>{todo.content}</li>
             }
           </ul>
         else
