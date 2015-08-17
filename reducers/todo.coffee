@@ -2,6 +2,7 @@
   ADD_TODO
   API_TODOS
   GET_TODOS
+  DELETE_TODO
   TODOS_READY
   TODOS_ERROR
 } = require '../constants/todos.coffee'
@@ -27,6 +28,11 @@ todos = (state, action) ->
     when GET_TODOS
       state = state.merge
         todos: action.payload
+    when DELETE_TODO
+      todos = state.get 'todos'
+      todos = todos.splice action.payload, 1
+      state = state.merge
+        todos: todos
 
     # API actions
     when API_TODOS
