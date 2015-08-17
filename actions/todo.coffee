@@ -1,6 +1,7 @@
 {
   ADD_TODO
   GET_TODOS
+  DELETE_TODO
   API_TODOS
   TODOS_READY
   TODOS_ERROR
@@ -39,3 +40,19 @@ module.exports.getTodos = -> (dispatch) ->
         payload: todos
 
   return action
+
+module.exports.deleteTodo = (id, index) -> (dispatch) ->
+
+  action = dispatch
+    type: API_TODOS
+    payload: Api.delete "http://localhost:8000/api/todos/#{id}"
+
+  action.payload
+    .then  -> dispatch type: TODOS_READY
+    .catch -> dispatch type: TODOS_ERROR
+
+  action.payload
+    .then ->
+      dispatch
+        type: DELETE_TODO
+        payload: index
