@@ -1,12 +1,10 @@
-express = require 'express'
-router  = express.Router()
+express  = require 'express'
+router   = express.Router()
+
+Todo = require '../models/Todo'
 
 router.get '/', (req, res) ->
-
-  res.json [
-    "Hello World!"
-    "Eat food"
-    "Be happy"
-  ]
+  Todo.find (err, docs) ->
+    res.json docs
 
 module.exports = router
