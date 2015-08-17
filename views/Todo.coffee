@@ -30,8 +30,15 @@ class Todo extends Component
         if @props.todos.length
           <ul>
             {
-              @props.todos.map (todo, i) ->
-                <li key={todo._id}>{todo.content}</li>
+              @props.todos.map (todo, i) =>
+                <li key={todo._id}>
+                  {todo.content}
+                  <button
+                    onClick={ =>
+                      @props.actions.deleteTodo(todo._id, i)
+                    }>delete
+                  </button>
+                </li>
             }
           </ul>
         else
