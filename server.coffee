@@ -9,6 +9,9 @@ mongoose.connect 'mongodb://localhost/redux_coffee_boilerplate'
 
 app = express()
 
+bodyParser = require 'body-parser'
+app.use bodyParser.json()
+
 { routes, fetchDataFromRoute, makeHandler, createStore } = require './App'
 
 base_html = fs.readFileSync './__dist__/base.html', 'utf-8'
