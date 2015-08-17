@@ -22,12 +22,17 @@ class Todo extends Component
 
   render: ->
     <div>
-      <ul>
-        {
-          @props.todos.map (todo, i) ->
-            <li key={i}>{todo}</li>
-        }
-      </ul>
+      {
+        if @props.todos.length
+          <ul>
+            {
+              @props.todos.map (todo, i) ->
+                <li key={i}>{todo}</li>
+            }
+          </ul>
+        else
+          <div><i>No Todos yet!</i></div>
+      }
       <input value={@state.value} onChange={@_onChange}/>
       <button onClick={@_addTodo}>Add Todo</button>
     </div>
