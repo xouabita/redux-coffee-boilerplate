@@ -13,4 +13,8 @@ router.post '/', (req, res) ->
   todo.save()
   res.json todo
 
+router.delete '/:id', (req, res) ->
+  Todo.remove _id: req.params.id, ->
+    res.sendStatus 200
+
 module.exports = router
