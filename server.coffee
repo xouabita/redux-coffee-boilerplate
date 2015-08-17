@@ -4,6 +4,9 @@ ejs     = require 'ejs'
 React   = require 'react'
 fs      = require 'fs'
 
+mongoose = require 'mongoose'
+mongoose.connect 'mongodb://localhost/redux_coffee_boilerplate'
+
 app = express()
 
 { routes, fetchDataFromRoute, makeHandler, createStore } = require './App'
