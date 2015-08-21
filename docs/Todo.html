@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Todo.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Todo.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2 id="example-of-component-which-need-data-">Example of component which need data.</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+React         = <span class="hljs-built_in">require</span> <span class="hljs-string">'react'</span>
+{ Component, PropTypes } = React
+actions = <span class="hljs-built_in">require</span> <span class="hljs-string">'../actions/todo'</span>
+
+{ connect } = <span class="hljs-built_in">require</span> <span class="hljs-string">'react-redux'</span>
+{ bindActionCreators } = <span class="hljs-built_in">require</span> <span class="hljs-string">'redux'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Todo</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span></span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>The <code>initialData</code> method return a promise. It need to be resolved
+before the route render.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-property">@initialData</span>: <span class="hljs-function"><span class="hljs-params">(state)</span> -&gt;</span>
+    promise = state.dispatch(actions.getTodos()).payload
+    <span class="hljs-keyword">return</span> promise
+
+  <span class="hljs-property">@propTypes</span>:
+    <span class="hljs-attribute">todos</span>: PropTypes.array.isRequired
+    <span class="hljs-attribute">actions</span>: PropTypes.object
+
+  <span class="hljs-attribute">constructor</span>: <span class="hljs-function"><span class="hljs-params">(props)</span> -&gt;</span>
+    <span class="hljs-keyword">super</span> props
+    <span class="hljs-property">@state</span> =
+      <span class="hljs-attribute">value</span>: <span class="hljs-string">''</span>
+
+  <span class="hljs-attribute">render</span>: <span class="hljs-function">-&gt;</span>
+    &lt;div&gt;
+      &lt;ul&gt;
+        {
+          <span class="hljs-property">@props</span>.todos.map (todo, i) -&gt;
+            &lt;li key={i}&gt;{todo}&lt;/li&gt;
+        }
+      &lt;/ul&gt;
+      &lt;input value={<span class="hljs-property">@state</span>.value} onChange={<span class="hljs-property">@_onChange</span>}/&gt;
+      &lt;button onClick={<span class="hljs-property">@_addTodo</span>}&gt;Add Todo&lt;/button&gt;
+    &lt;/div&gt;
+
+  <span class="hljs-attribute">_onChange</span>: <span class="hljs-function"><span class="hljs-params">(e)</span> =&gt;</span> <span class="hljs-property">@setState</span> <span class="hljs-attribute">value</span>: e.target.value
+
+  <span class="hljs-attribute">_addTodo</span>: <span class="hljs-function">=&gt;</span>
+    <span class="hljs-property">@props</span>.actions.addTodo <span class="hljs-property">@state</span>.value
+    <span class="hljs-property">@setState</span> <span class="hljs-attribute">value</span>: <span class="hljs-string">''</span>
+<span class="hljs-function">
+<span class="hljs-title">mapStateToProps</span>    = <span class="hljs-params">(state)</span> -&gt;</span>
+  <span class="hljs-attribute">todos</span>: state.todo.todos
+<span class="hljs-function"><span class="hljs-title">mapDispatchToProps</span> = <span class="hljs-params">(dispatch)</span> -&gt;</span> <span class="hljs-attribute">actions</span>: bindActionCreators actions, dispatch</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>We use connect from react-redux to connect the data.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports = connect(mapStateToProps, mapDispatchToProps) Todo</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
