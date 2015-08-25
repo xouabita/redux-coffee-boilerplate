@@ -85,8 +85,8 @@ module.exports = (options) ->
   _coffeeLoader = [
     test: /\.coffee$/
     loader:
-      if options.hot then "react-hot!coffee!cjsx"
-      else "coffee!cjsx"
+      if options.hot then "react-hot!regenerator!coffee!cjsx"
+      else "regenerator!coffee!cjsx"
     exclude: "node_modules"
   ]
 
