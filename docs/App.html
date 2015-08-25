@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>App.coffee</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>App.coffee</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h2 id="entry-of-the-universal-app">Entry of the universal app</h2>
+<p><code>App.coffee</code> contains some methods helpers that can run both on server
+and browser</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+React = <span class="hljs-built_in">require</span> <span class="hljs-string">'react'</span>
+{ Route, DefaultRoute } = <span class="hljs-built_in">require</span> <span class="hljs-string">'react-router'</span>
+{ Provider } = <span class="hljs-built_in">require</span> <span class="hljs-string">'react-redux'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>This the page component. It contains only the menu.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Page = <span class="hljs-built_in">require</span> <span class="hljs-string">'./components/Page'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>This is our views</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>Index = <span class="hljs-built_in">require</span> <span class="hljs-string">'./views/Index'</span>
+Todo  = <span class="hljs-built_in">require</span> <span class="hljs-string">'./views/Todo'</span>
+
+{ combineReducers, createStore, applyMiddleware } = <span class="hljs-built_in">require</span> <span class="hljs-string">'redux'</span>
+thunk = <span class="hljs-built_in">require</span> <span class="hljs-string">'redux-thunk'</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Here we define our routes. We have two routes, the default route is
+is handled by Index component and <code>/todo</code> route handled by Todo component.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports.routes =
+  &lt;Route path=<span class="hljs-string">"/"</span> handler={Page}&gt;
+    &lt;DefaultRoute handler={Index} /&gt;
+    &lt;Route path=<span class="hljs-string">"/todo"</span> handler={Todo} /&gt;
+  &lt;/Route&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>The methods <code>fetchDataFromRoute</code> is where happen all the magic.
+Each handler can have a specific static method <code>initialData()</code>
+which return a Promise and fill our reducers with the data required.
+This method return a Promise.all with all the promises required by the
+route handlers.
+When all the data is loaded we render the app.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports.fetchDataFromRoute = <span class="hljs-function"><span class="hljs-params">(state, store)</span> -&gt;</span>
+
+  routes   = state.routes
+  promises = routes</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Get all the views who need data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    .filter (route) -&gt;
+      wrapped = route.handler.WrappedComponent
+      <span class="hljs-keyword">if</span> wrapped <span class="hljs-keyword">and</span> wrapped.initialData <span class="hljs-keyword">then</span> <span class="hljs-literal">yes</span>
+      <span class="hljs-keyword">else</span> <span class="hljs-literal">no</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Return all the promises</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    .map (route) -&gt;
+      <span class="hljs-keyword">return</span> route.handler.WrappedComponent.initialData(store)
+
+  <span class="hljs-keyword">return</span> Promise.all(promises)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>The method makeHandler connect a Handler with the redux store.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports.makeHandler = <span class="hljs-function"><span class="hljs-params">(Handler, store)</span> -&gt;</span>
+  &lt;Provider store={store}&gt;
+    { -&gt; &lt;Handler /&gt; }
+  &lt;/Provider&gt;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>This method combine all the reducers into one, add the different
+redux middlewares and hydrate the store with <code>initialState</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-built_in">module</span>.exports.createStore = <span class="hljs-function"><span class="hljs-params">(initialState)</span> -&gt;</span>
+  reducers = <span class="hljs-built_in">require</span> <span class="hljs-string">'./reducers'</span>
+  reducer  = combineReducers reducers
+  createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+
+  <span class="hljs-keyword">return</span> createStoreWithMiddleware reducer, initialState</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
