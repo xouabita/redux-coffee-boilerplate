@@ -95,8 +95,9 @@ _config_keys.forEach (config) ->
 
   gulp.task "nodemon-#{config}", ["watch-server-#{config}", "web-server-#{config}"], ->
     nodemon
-      execMap: js: 'node'
-      script: __dirname + "/__build__/server"
+      execMap:
+        js: 'node --harmony'
+      script: __dirname + "/__build__/server.js"
       ignore: ['*']
       watch: ['foo/']
       ext: 'noooooooooooooooo'
