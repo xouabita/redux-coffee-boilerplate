@@ -5,7 +5,13 @@ ejs     = require 'ejs'
 React   = require 'react'
 fs      = require 'fs'
 
+mongoose = require 'mongoose'
+mongoose.connect 'mongodb://localhost/redux_coffee_boilerplate'
+
 app = express()
+
+bodyParser = require 'body-parser'
+app.use bodyParser.json()
 
 { routes, fetchDataFromRoute, makeHandler, createStore } = require './App'
 

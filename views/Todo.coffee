@@ -16,7 +16,11 @@ class Todo extends Component
     return promise
 
   @propTypes:
-    todos: PropTypes.array.isRequired
+    todos: PropTypes.arrayOf(
+      PropTypes.shape
+        _id: PropTypes.string.isRequired
+        content: PropTypes.string.isRequired
+    ).isRequired
     actions: PropTypes.object
 
   constructor: (props) ->
@@ -26,12 +30,24 @@ class Todo extends Component
 
   render: ->
     <div>
-      <ul>
-        {
-          @props.todos.map (todo, i) ->
-            <li key={i}>{todo}</li>
-        }
-      </ul>
+      {
+        if @props.todos.length
+          <ul>
+            {
+              @props.todos.map (todo, i) =>
+                <li key={todo._id}>
+                  {todo.content}
+                  <button
+                    onClick={ =>
+                      @props.actions.deleteTodo(todo._id, i)
+                    }>delete
+                  </button>
+                </li>
+            }
+          </ul>
+        else
+          <div><i>No Todos yet!</i></div>
+      }
       <input value={@state.value} onChange={@_onChange}/>
       <button onClick={@_addTodo}>Add Todo</button>
     </div>
