@@ -47,6 +47,13 @@ If you wonder why coffeescript ? Read [this](http://noredinktech.tumblr.com/post
 └── webpack.server.coffee # Config for server
 ~~~
 
+### Annotated source
+
+- [App.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/App.html)
+- [Todo.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/Todo.html)
+- [client.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/client.html)
+- [server.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/server.html)
+
 #### Inspiration
 
 - [react-starter](https://github.com/webpack/react-starter) for the webpack configs
