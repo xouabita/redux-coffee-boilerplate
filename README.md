@@ -49,16 +49,16 @@ If you wonder why coffeescript, read [this](http://noredinktech.tumblr.com/post/
 
 ### Annotated source
 
-- [App.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/App.html)
-- [Todo.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/Todo.html)
-- [client.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/client.html)
-- [server.coffee](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/server.html)
+- [App.coffee](https://rawgit.com/xouabita/redux-coffee-boilerplate/master/docs/App.html)
+- [Todo.coffee](https://rawgit.com/xouabita/redux-coffee-boilerplate/master/docs/Todo.html)
+- [client.coffee](https://rawgit.com/xouabita/redux-coffee-boilerplate/master/docs/client.html)
+- [server.coffee](https://rawgit.com/xouabita/redux-coffee-boilerplate/master/docs/server.html)
 
 ## Where to start ?
 
 1. Clone the repo
 2. `npm i` to install dependencies
-3. Read the [`App.coffee`](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/App.html) and [`Todo.coffee`](https://cdn.rawgit.com/xouabita/redux-coffee-boilerplate/fd611b9bf3c12df6053b24132173c421035d9940/docs/Todo.html) annotated source
+3. Read the [`App.coffee`](https://rawgit.com/xouabita/redux-coffee-boilerplate/master/docs/App.html) and [`Todo.coffee`](https://rawgit.com/xouabita/redux-coffee-boilerplate/master/docs/Todo.html) annotated source
 4. Read the source code and modify it
 5. If any questions, open an issue...
 
