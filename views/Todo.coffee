@@ -1,4 +1,4 @@
-# ## Example of component which need data.
+# ## Example of a component which needs data.
 
 React         = require 'react'
 { Component, PropTypes } = React
@@ -9,8 +9,8 @@ actions = require '../actions/todo'
 
 class Todo extends Component
 
-  # The `initialData` method return a promise. It need to be resolved
-  # before the route render.
+  # The `initialData` method returns a Promise. It needs to be resolved
+  # before the route renders.
   @initialData: (state) ->
     promise = state.dispatch(actions.getTodos()).payload
     return promise
