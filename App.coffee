@@ -1,36 +1,34 @@
 # ## Entry of the universal app
 #
-# `App.coffee` contains some methods helpers that can run both on server
-# and browser
+# `App.coffee` contains some methods that can run both on server
+# and browser.
 
 React = require 'react'
 { Route, DefaultRoute } = require 'react-router'
 { Provider } = require 'react-redux'
 
-# This the page component. It contains only the menu.
 Page = require './components/Page'
 
-# This is our views
 Index = require './views/Index'
 Todo  = require './views/Todo'
 
 { combineReducers, createStore, applyMiddleware } = require 'redux'
 thunk = require 'redux-thunk'
 
-# Here we define our routes. We have two routes, the default route is
-# is handled by Index component and `/todo` route handled by Todo component.
+# Here we define our routes. We have two routes: the default route is
+# handled by `Index` component and `/todo` route is handled by `Todo` component.
 module.exports.routes =
   <Route path="/" handler={Page}>
     <DefaultRoute handler={Index} />
     <Route path="/todo" handler={Todo} />
   </Route>
 
-# The methods `fetchDataFromRoute` is where happen all the magic.
+# The method `fetchDataFromRoute` is where all the magic happens.
 # Each handler can have a specific static method `initialData()`
-# which return a Promise and fill our reducers with the data required.
-# This method return a Promise.all with all the promises required by the
+# which returns a Promise and fill our reducers with the data required.
+# This method returns a `Promise.all` with all the promises required by the
 # route handlers.
-# When all the data is loaded we render the app.
+# When all the data is loaded, we render all the components.
 module.exports.fetchDataFromRoute = (state, store) ->
 
   routes   = state.routes
@@ -48,14 +46,14 @@ module.exports.fetchDataFromRoute = (state, store) ->
 
   return Promise.all(promises)
 
-# The method makeHandler connect a Handler with the redux store.
+# The method makeHandler connects a Handler with the redux store.
 module.exports.makeHandler = (Handler, store) ->
   <Provider store={store}>
     { -> <Handler /> }
   </Provider>
 
-# This method combine all the reducers into one, add the different
-# redux middlewares and hydrate the store with `initialState`
+# This method combines all the reducers into one, add the different
+# redux middlewares and hydrate the store with `initialState`.
 module.exports.createStore = (initialState) ->
   reducers = require './reducers'
   reducer  = combineReducers reducers
