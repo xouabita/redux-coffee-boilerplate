@@ -88,18 +88,25 @@ app.use (req, res, next) -&gt;
         <p>Resolve all the promises….</p>
 
         
-          <div class='highlight'><pre>    fetchDataFromRoute(state, store).<span class="hljs-keyword">then</span> -&gt;
-      initialState = store.getState()
+          <div class='highlight'><pre>    fetchDataFromRoute(state, store).<span class="hljs-keyword">then</span> -&gt;</pre></div>
+        
+      
+        
+        <p>…then render the route.</p>
+
+        
+          <div class='highlight'><pre>      initialState = store.getState()
       handler      = makeHandler Handler, store
       html         = React.renderToString handler
-      res.send ejs.render base_html, <span class="hljs-comment"># ...then render the route.</span>
+      res.send ejs.render base_html,
         <span class="hljs-attribute">react</span>: html
         <span class="hljs-attribute">metas</span>: []
         <span class="hljs-attribute">state</span>: JSON.stringify initialState</pre></div>
         
       
         
-        <p>Like that all the data is loaded before.</p>
+        <p>Like that, all the data is loaded before the handlers of the route
+are rendered.</p>
 
         
           <div class='highlight'><pre>
