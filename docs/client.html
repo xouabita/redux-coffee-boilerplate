@@ -66,7 +66,7 @@ Router = <span class="hljs-built_in">require</span> <span class="hljs-string">'r
         
       
         
-        <p>Hydrate the store with the initialState</p>
+        <p>Hydrate the store with the initialState.</p>
 
         
           <div class='highlight'><pre>initialState = JSON.parse <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'initial-state'</span>).innerHTML
@@ -74,9 +74,9 @@ store = createStore initialState</pre></div>
         
       
         
-        <p>Run the Router. Each time the route change, all the promises
-from fetchDataFromRoute are resolved. Like that the data is loaded
-before the route is rendered.</p>
+        <p>Run the Router. Each time when a route changes, all the promises
+from <code>fetchDataFromRoute()</code> will be resolved. In this way, the data
+is loaded before the route is rendered.</p>
 
         
           <div class='highlight'><pre>Router.run routes, Router.HistoryLocation, <span class="hljs-function"><span class="hljs-params">(Handler, state)</span> -&gt;</span>
