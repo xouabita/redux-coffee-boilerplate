@@ -11,6 +11,10 @@ A simple redux boilerplate/example written in coffeescript featuring:
 
 If you wonder why coffeescript ? Read [this](http://noredinktech.tumblr.com/post/111583727108/dont-replace-coffeescript-with-es6-transpilers).
 
+### Screenshot
+
+![screenshot](http://g.recordit.co/gcZQkpM5JU.gif)
+
 ### Structure
 
 ~~~bash
