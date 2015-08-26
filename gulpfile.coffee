@@ -106,3 +106,12 @@ gulp.task "dev", ["nodemon-dev"]
 gulp.task "tunnel", ["build-server-tunnel", "build-frontend-tunnel"]
 
 gulp.task "default", ["dev"]
+
+
+# Documentation
+docco = require 'docco'
+gulp.task 'docco', (done) ->
+  docco.document
+    args: ['App.coffee', 'views/Todo.coffee', 'client.coffee', 'server.coffee']
+    layout: 'linear'
+  , done

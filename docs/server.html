@@ -4,34 +4,62 @@
 <head>
   <title>server.coffee</title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="public/stylesheets/normalize.css" />
   <link rel="stylesheet" media="all" href="docco.css" />
 </head>
 <body>
-  <div id="container">
-    <div id="background"></div>
-    
-    <ul class="sections">
-        
-          <li id="title">
-              <div class="annotation">
-                  <h1>server.coffee</h1>
-              </div>
-          </li>
-        
-        
-        
-        <li id="section-1">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-1">&#182;</a>
-              </div>
-              <h2 id="entry-for-server-side">Entry for server-side</h2>
+  <div class="container">
+    <div class="page">
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>express = <span class="hljs-built_in">require</span> <span class="hljs-string">'express'</span>
+      <div class="header">
+        
+          <h1>server.coffee</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="App.html">
+                    App.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="client.html">
+                    client.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="server.html">
+                    server.coffee
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="Todo.html">
+                    Todo.coffee
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        <h2 id="entry-for-server-side">Entry for server-side</h2>
+
+        
+          <div class='highlight'><pre>express = <span class="hljs-built_in">require</span> <span class="hljs-string">'express'</span>
 colors  = <span class="hljs-built_in">require</span> <span class="hljs-string">'colors'</span>
 ejs     = <span class="hljs-built_in">require</span> <span class="hljs-string">'ejs'</span>
 React   = <span class="hljs-built_in">require</span> <span class="hljs-string">'react'</span>
@@ -53,50 +81,34 @@ app.use (req, res, next) -&gt;
 
   store = createStore()
 
-  router.run (Handler, state) -&gt;</pre></div></div>
-            
-        </li>
+  router.run (Handler, state) -&gt;</pre></div>
         
+      
         
-        <li id="section-2">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-              <p>Resolve all the promises….</p>
+        <p>Resolve all the promises….</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>    fetchDataFromRoute(state, store).<span class="hljs-keyword">then</span> -&gt;
+        
+          <div class='highlight'><pre>    fetchDataFromRoute(state, store).<span class="hljs-keyword">then</span> -&gt;
       initialState = store.getState()
       handler      = makeHandler Handler, store
       html         = React.renderToString handler
       res.send ejs.render base_html, <span class="hljs-comment"># ...then render the route.</span>
         <span class="hljs-attribute">react</span>: html
         <span class="hljs-attribute">metas</span>: []
-        <span class="hljs-attribute">state</span>: JSON.stringify initialState</pre></div></div>
-            
-        </li>
+        <span class="hljs-attribute">state</span>: JSON.stringify initialState</pre></div>
         
+      
         
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <p>Like that all the data is loaded before.</p>
+        <p>Like that all the data is loaded before.</p>
 
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>
-app.listen <span class="hljs-number">8000</span>, <span class="hljs-function">-&gt;</span>
-  <span class="hljs-built_in">console</span>.log <span class="hljs-string">"\nYour app is now running on port 8000\n"</span>.green.underline</pre></div></div>
-            
-        </li>
         
-    </ul>
+          <div class='highlight'><pre>
+app.listen <span class="hljs-number">8000</span>, <span class="hljs-function">-&gt;</span>
+  <span class="hljs-built_in">console</span>.log <span class="hljs-string">"\nYour app is now running on port 8000\n"</span>.green.underline</pre></div>
+        
+      
+      <div class="fleur">h</div>
+    </div>
   </div>
 </body>
 </html>
