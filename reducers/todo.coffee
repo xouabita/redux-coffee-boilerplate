@@ -1,10 +1,7 @@
 {
   ADD_TODO
-  API_TODOS
   GET_TODOS
   DELETE_TODO
-  TODOS_READY
-  TODOS_ERROR
 } = require '../constants/todos.coffee'
 
 Immutable = require 'immutable'
@@ -33,20 +30,6 @@ todos = (state, action) ->
       todos = todos.splice action.payload, 1
       state = state.merge
         todos: todos
-
-    # API actions
-    when API_TODOS
-      state = state.merge
-        promise: action.payload
-        status: 'PENDING'
-    when TODOS_READY
-      state = state.merge
-        promise: undefined
-        status: 'READY'
-    when TODOS_ERROR
-      state = state.merge
-        promise: undefined
-        status: 'ERROR'
 
   return state.toJS()
 

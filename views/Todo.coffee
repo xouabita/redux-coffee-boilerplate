@@ -7,13 +7,14 @@ actions = require '../actions/todo'
 { connect } = require 'react-redux'
 { bindActionCreators } = require 'redux'
 
+co = require 'co'
+
 class Todo extends Component
 
   # The `initialData` method return a promise. It need to be resolved
   # before the route render.
-  @initialData: (state) ->
-    promise = state.dispatch(actions.getTodos()).payload
-    return promise
+  @initialData: (state) -> co ->
+    yield state.dispatch(actions.getTodos())
 
   @propTypes:
     todos: PropTypes.arrayOf(
