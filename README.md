@@ -62,6 +62,19 @@ If you wonder why coffeescript, read [this](http://noredinktech.tumblr.com/post/
 4. Read the source code and modify it
 5. If any questions, open an issue...
 
+### To run:
+
+~~~bash
+gulp # run the dev server
+~~~
+
+### Go further:
+
+The example on this branch (master) is quite easy (it doesn't use an API).
+For a more complex examples:
+
+- `git checkout with-mongoose` for an example with a mongoose backend
+- `git checkout with-generators` for an example with es6 generators
 
 #### Inspiration
 
